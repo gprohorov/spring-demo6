@@ -1,10 +1,10 @@
-package edu.pro.springdemo6.controller.api;
+package edu.pro.springdemo6.controller.item.api;
 /*
   @author   george
   @project   spring-demo6
   @class  ItemRestController
   @version  1.0.0 
-  @since 17.02.22 - 18.16
+  @since 17.02.22 - 18.16  https://www.bootdey.com/snippets/view/bs4-contact-cards
 */
 
 import edu.pro.springdemo6.model.Item;
@@ -32,10 +32,11 @@ public class ItemRestController {
 
 
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Item> getAll(){
         return items;
     }
+
     @GetMapping("/{id}")
     public Item get(@PathVariable(value = "id") String id){
         return items.stream().filter(item -> item.getId().equals(id))
