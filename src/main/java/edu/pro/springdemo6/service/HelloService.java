@@ -23,8 +23,9 @@ public class HelloService {
     private List<Hello> list = new ArrayList<>(
             Arrays.asList(
                     new Hello("1", "John", "Paul","Hi, Paul!"),
-                    new Hello("2", "John", "George","Hi, George!"),
-                    new Hello("3", "John", "Ringo","Hi, Ringo!")
+                    new Hello("2", "Ringo", "George","Hi, George!"),
+                    new Hello("3", "John", "Ringo","Hi, Ringo!"),
+                    new Hello("4", "Freddy", "Ringo","Hi, Ringo!")
             )
     );
 
@@ -46,6 +47,10 @@ public class HelloService {
 
     public Hello create(Hello hello){
       return repository.save(hello);
+    }
+
+    public List<Hello> getAllFrom(String str){
+        return repository.findAllByFromContaining(str);
     }
 
 

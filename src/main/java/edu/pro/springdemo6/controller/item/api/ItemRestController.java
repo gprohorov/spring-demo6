@@ -8,6 +8,8 @@ package edu.pro.springdemo6.controller.item.api;
 */
 
 import edu.pro.springdemo6.model.Item;
+import edu.pro.springdemo6.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -19,37 +21,27 @@ import java.util.List;
 @RequestMapping("/api/v1/items")
 public class ItemRestController {
 
-    private LocalDateTime now = LocalDateTime.now();
-    private List<Item> items = new ArrayList<>(
-            Arrays.asList(
-                    new Item("0", "item1", "descr0", now, null),
-                    new Item("1", "item1", "descr1", now, null),
-                    new Item("2", "item2", "descr2", now, null)
-            )
-    );
-
-    //  CreateReadUpdateDelete
-
+    @Autowired
+    ItemService service;
 
 
     @GetMapping("/")
     public List<Item> getAll(){
-        return items;
+        return service.getAllItems();
     }
+
 
     @GetMapping("/{id}")
     public Item get(@PathVariable(value = "id") String id){
-        return items.stream().filter(item -> item.getId().equals(id))
-                .findFirst().get();
+        return service.getOneById(id);
     }
 
-    @PostMapping("/{id}")
-    public Item create(@PathVariable(value = "id") String id){
-        return items.stream().filter(item -> item.getId().equals(id))
-                .findFirst().get();
+    @PostMapping("/")
+    public Item create(@RequestBody Item item){
+       return service.create(item);
     }
 
-
+/*
 
 
     @GetMapping("/delete/{id}")
@@ -61,6 +53,8 @@ public class ItemRestController {
 
         return  (succes) ? itemToDelete : null;
     }
+*/
+
 
 
 

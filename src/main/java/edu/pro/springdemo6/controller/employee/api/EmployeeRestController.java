@@ -23,16 +23,16 @@ public class EmployeeRestController {
     private List<Employee> employees = new ArrayList<>(
             Arrays.asList(
                     new Employee(1,
-                            "emp1",
-                            "descr0",
-                            " now", "null",
-                            "yyy",
+                            "John",
+                            "john-lennon@gmail.com",
+                            " Designer", "433334344332",
+                            "https://bootdey.com/img/Content/avatar/avatar6.png",
                             "6777"),
                     new Employee(2,
                             "emp2",
                             "descr2",
                             " now", "null",
-                            "yyy",
+                            "https://bootdey.com/img/Content/avatar/avatar7.png",
                             "6777")
 
             )

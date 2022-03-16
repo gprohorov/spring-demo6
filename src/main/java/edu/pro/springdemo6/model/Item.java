@@ -7,11 +7,16 @@ package edu.pro.springdemo6.model;
   @since 17.02.22 - 18.05
 */
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Document
 public class Item {
-    private String id;
+    @Id
+    private String id; // UUID
     private String name;
     private String description;
     private LocalDateTime createdAt;
