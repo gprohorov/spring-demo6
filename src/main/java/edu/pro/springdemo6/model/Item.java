@@ -7,15 +7,19 @@ package edu.pro.springdemo6.model;
   @since 17.02.22 - 18.05
 */
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@ApiModel
 @Document
 public class Item {
     @Id
+    @ApiModelProperty(value = " UUID is geven by BD", required = true, dataType = "UUID  to   string", example = "547654strdrd5788")
     private String id; // UUID
     private String name;
     private String description;

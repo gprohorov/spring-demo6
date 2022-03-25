@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemService {
@@ -46,12 +47,28 @@ public class ItemService {
     public Item getOneById(String id){
         return repository.findById(id).orElse(null);
     }
+
     public Item create(Item item){
         item.setCreatedAt(LocalDateTime.now());
         Item itemFromDB = repository.save(item);
-        System.out.println(item.getId());
         return itemFromDB;
-       // return repository.save(item);
     }
+
+    public Item update(Item item){
+        item.setUpdatedAt(LocalDateTime.now());
+        return repository.save(item);
+    }
+
+    public void delete(String  id){
+        repository.deleteById(id);
+    }
+
+    public List<Item> getAllByName(String name){
+        return this.getAllItems().stream()
+                .filter(item -> item.getName().equals(name))
+                .collect(Collectors.toList());
+    }
+
+
 
 }
