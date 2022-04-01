@@ -26,16 +26,16 @@ public class ItemService {
     private LocalDateTime now = LocalDateTime.now();
     private List<Item> items = new ArrayList<>(
             Arrays.asList(
-                    new Item("0", "item1", "descr0", now, null),
-                    new Item("1", "item1", "descr1", now, null),
-                    new Item( "item2", "descr2")
+                    new Item("0", "item1", "descr0", now, now),
+                    new Item("1", "item1", "descr1", now, now),
+                    new Item( "2","item2", "descr2", now, now)
             )
     );
 
     @Autowired
     ItemMongoRepository repository;
 
- //   @PostConstruct
+  @PostConstruct
     void init(){
         repository.saveAll(items);
     }

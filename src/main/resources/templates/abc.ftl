@@ -6,11 +6,5 @@
 </head>
 <body>
 
-<h1>Hello,  Project!</h1>>
-
-<a href="/api/v1/items/">Items API</a>
-<br>
-<a href="/ui/v1/items/">Items UI</a>
-
 </body>
 </html>

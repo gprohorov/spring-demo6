@@ -27,7 +27,7 @@ public class HelloUIController {
     String getAll(Model model){
         List<Hello> items = service.getAll();
         model.addAttribute("items", items);
-        return "helloes";
+        return "items";
     }
 
 }
