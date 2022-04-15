@@ -50,6 +50,7 @@ public class ItemService {
 
     public Item create(Item item){
         item.setCreatedAt(LocalDateTime.now());
+       // item.setUpdatedAt(LocalDateTime.now());
         Item itemFromDB = repository.save(item);
         return itemFromDB;
     }

@@ -27,12 +27,19 @@
             <td>${item.name}</td>
             <td>${item.description}</td>
             <td>${item.createdAt}</td>
-            <td>${item.updatedAt}</td>
-            <td> <button >Delete</button></td>
-            <td> <a href="">Edit</a></td>
+            <td ><#if item.updatedAt??>
+                ${item.updatedAt}
+                <#else> No update
+                </#if>
+            </td>
+
+            <td> <a href="/ui/v1/items/delete/${item.id}"  >Delete</a></td>
+            <td> <a href="/ui/v1/items/edit/${item.id}">Edit</a></td>
         </tr>
     </#list>
 </table>
+
+<a  href="/ui/v1/items"> Create </a>
 
 </body>
 </html>
