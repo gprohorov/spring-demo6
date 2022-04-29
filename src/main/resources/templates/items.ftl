@@ -14,6 +14,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Description</th>
+        <th>DAY</th>
         <th>Created</th>
         <th>Updated</th>
         <th>Delete</th>
@@ -26,6 +27,7 @@
             <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.description}</td>
+            <td>${item.day}</td>
             <td>${item.createdAt}</td>
             <td ><#if item.updatedAt??>
                 ${item.updatedAt}

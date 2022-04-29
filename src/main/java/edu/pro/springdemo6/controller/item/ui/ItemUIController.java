@@ -8,6 +8,7 @@ package edu.pro.springdemo6.controller.item.ui;
 */
 
 import edu.pro.springdemo6.form.ItemForm;
+import edu.pro.springdemo6.model.DaysOfWeek;
 import edu.pro.springdemo6.model.Item;
 import edu.pro.springdemo6.service.ItemService;
 import io.swagger.annotations.ApiOperation;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -32,7 +34,10 @@ public class ItemUIController {
     public String getAll(Model model){
 
         List<Item> list = service.getAllItems();
+
         model.addAttribute("items", list);
+
+
         return "items";
     }
 
@@ -48,10 +53,26 @@ public class ItemUIController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String addItem(Model model){
         ItemForm itemForm = new ItemForm();
+        List<DaysOfWeek> days = Arrays.asList(DaysOfWeek.values());
+
         model.addAttribute("form", itemForm);
+        model.addAttribute("days", days);
         return "add-item";
     }
 
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public String addItem( @ModelAttribute("form") ItemForm form ){
+        Item item = new Item();
+        item.setName(form.getName());
+        item.setDescription(form.getDescription());
+        item.setDay(form.getDay());
+        LocalDateTime ldt = LocalDateTime.now();
+        item.setCreatedAt(ldt);
+        item.setUpdatedAt(ldt);
+        service.create(item);
+
+        return "redirect:/ui/v1/items/";
+    }
 
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

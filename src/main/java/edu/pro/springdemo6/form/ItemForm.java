@@ -7,17 +7,28 @@ package edu.pro.springdemo6.form;
   @since 08.04.22 - 21.17
 */
 
+import edu.pro.springdemo6.model.DaysOfWeek;
+
 import java.time.LocalDateTime;
 
 public class ItemForm {
     private String id;
     private String name;
     private String description;
+    private DaysOfWeek day;
     private String createdAt;
     private String updatedAt;
 
 
     public ItemForm() {
+    }
+
+    public DaysOfWeek getDay() {
+        return day;
+    }
+
+    public void setDay(DaysOfWeek day) {
+        this.day = day;
     }
 
     public String getId() {

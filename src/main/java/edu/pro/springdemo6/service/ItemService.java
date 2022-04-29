@@ -7,6 +7,7 @@ package edu.pro.springdemo6.service;
   @since 16.03.22 - 21.20
 */
 
+import edu.pro.springdemo6.model.DaysOfWeek;
 import edu.pro.springdemo6.model.Item;
 import edu.pro.springdemo6.repository.ItemMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,9 +28,9 @@ public class ItemService {
     private LocalDateTime now = LocalDateTime.now();
     private List<Item> items = new ArrayList<>(
             Arrays.asList(
-                    new Item("0", "item1", "descr0", now, now),
-                    new Item("1", "item1", "descr1", now, now),
-                    new Item( "2","item2", "descr2", now, now)
+                    new Item("0", "item1", "descr0", DaysOfWeek.FRIDAY,now, now),
+                    new Item("1", "item1", "descr1", DaysOfWeek.FRIDAY, now, now),
+                    new Item( "2","item2", "descr2",  DaysOfWeek.FRIDAY,now, now)
             )
     );
 

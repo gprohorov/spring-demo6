@@ -14,6 +14,7 @@
             <br>
             Description: <@spring.formInput "form.description" "" "text"/>
             <br>
+
             Created: <@spring.formInput "form.createdAt" "" "date"/>
             <br>
             <input type=submit value="Update">

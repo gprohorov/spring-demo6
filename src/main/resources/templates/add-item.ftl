@@ -14,6 +14,8 @@
             <br>
             Description: <@spring.formInput "form.description" "" "text"/>
             <br>
+            DAY: <@spring.formSingleSelect "form.day", days, ""/>
+            <br>
             <br>
             <input type=submit value="Create">
         </form>
