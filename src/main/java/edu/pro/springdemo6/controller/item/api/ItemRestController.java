@@ -27,18 +27,19 @@ public class ItemRestController {
     ItemService service;
 
     @ApiOperation(value = "  Get them all", notes= " ababab galamaga")
-    @ApiResponse(code = 200, message = "Success")
+    @ApiResponse(code = 200, message = "Successzzzzzzzzzz")
     @GetMapping("/")
     public List<Item> getAll(){
         return service.getAllItems();
     }
 
-    @ApiOperation(value = "  Get one  by Idl", notes= " 245254353534")
+    @ApiOperation(value = "  Get one  by Id", notes= " 245254353534")
     @ApiResponse(code = 200, message = "Success")
     @GetMapping("/{id}")
     public Item get(@PathVariable(value = "id") String id){
         return service.getOneById(id);
     }
+
 
     @PostMapping("/")
     public Item create(@RequestBody Item item){
