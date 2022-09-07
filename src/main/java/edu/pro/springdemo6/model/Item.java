@@ -21,7 +21,7 @@ public class Item {
     @Id
     @ApiModelProperty(value = " UUID is geven by BD", required = true, dataType = "UUID  to   string", example = "547654strdrd5788")
     private String id; // UUID
-    private String name;
+    private String name; //
     private String description;
     private DaysOfWeek day;
     private LocalDateTime createdAt;
