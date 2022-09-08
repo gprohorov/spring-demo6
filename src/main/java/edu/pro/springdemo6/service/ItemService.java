@@ -7,6 +7,7 @@ package edu.pro.springdemo6.service;
   @since 16.03.22 - 21.20
 */
 
+import edu.pro.springdemo6.exception.ApiRequestException;
 import edu.pro.springdemo6.model.DaysOfWeek;
 import edu.pro.springdemo6.model.Item;
 import edu.pro.springdemo6.repository.ItemMongoRepository;
@@ -47,7 +48,7 @@ public class ItemService {
     }
 
     public Item getOneById(String id){
-        return repository.findById(id).orElse(null);
+        return repository.findById(id).orElseThrow( () -> new ApiRequestException("Not Found!"));
     }
 
     public Item create(Item item){
