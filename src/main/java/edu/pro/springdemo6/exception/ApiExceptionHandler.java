@@ -28,4 +28,6 @@ public class ApiExceptionHandler {
 
         return new ResponseEntity<>(apiException, apiException.getHttpStatus());
     }
+
+
 }
