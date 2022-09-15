@@ -16,10 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,10 +65,14 @@ public class ItemService {
     }
 
     public List<Item> getAllByName(String name){
+
+         Map<DaysOfWeek, List<Item>> collect = this.getAllItems().stream().collect(Collectors.groupingBy(Item::getDay));
+
         return this.getAllItems().stream()
                 .filter(item -> item.getName().equals(name))
                 .collect(Collectors.toList());
     }
+
 
 
 

@@ -7,6 +7,7 @@ package edu.pro.springdemo6.controller.item.api;
   @since 17.02.22 - 18.16  https://www.bootdey.com/snippets/view/bs4-contact-cards
 */
 
+import edu.pro.springdemo6.model.DaysOfWeek;
 import edu.pro.springdemo6.model.Item;
 import edu.pro.springdemo6.service.ItemService;
 import io.swagger.annotations.ApiOperation;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/api/v1/items")
@@ -45,6 +47,20 @@ public class ItemRestController {
     @PostMapping("/")
     public Item create(@RequestBody Item item){
        return service.create(item);
+    }
+
+    @PostMapping("/all")
+    public void createBunch(@RequestBody List<Item> items){
+        List<DaysOfWeek> days = Arrays.asList(DaysOfWeek.values());
+        Random random = new Random();
+
+
+        items.stream().forEach(item -> {
+            int index = random.nextInt(6);
+            System.out.println(index);
+            DaysOfWeek day = days.get(index);
+            item.setDay(day);
+            service.create(item);});
     }
 
     @PutMapping("/")

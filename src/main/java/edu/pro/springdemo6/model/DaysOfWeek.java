@@ -8,5 +8,5 @@ package edu.pro.springdemo6.model;
 */
 
 public enum DaysOfWeek {
-    MONDAY, TUESDAY, FRIDAY, SATURDAY
+    MONDAY, TUESDAY, FRIDAY, WEDNESDAY, THIRSDAY, SUNDAY,SATURDAY
 }
