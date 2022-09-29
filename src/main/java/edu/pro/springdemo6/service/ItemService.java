@@ -7,8 +7,11 @@ package edu.pro.springdemo6.service;
   @since 16.03.22 - 21.20
 */
 
+import edu.pro.springdemo6.annotation.CustomAnnotation;
 import edu.pro.springdemo6.model.Item;
 import edu.pro.springdemo6.repository.ItemMongoRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,7 @@ import java.util.stream.Collectors;
 @Service
 public class ItemService {
 
+    Logger logger = LogManager.getLogger(ItemService.class);
 
     private LocalDateTime now = LocalDateTime.now();
     private List<Item> items = new ArrayList<>(
@@ -40,11 +44,14 @@ public class ItemService {
         repository.saveAll(items);
     }
 
+    @CustomAnnotation
     public List<Item> getAllItems(){
+        logger.info("Entered in getAllItems() method");
         return repository.findAll();
     }
 
     public Item getOneById(String id){
+        logger.info("Entered in getAllItems() method");
         return repository.findById(id).orElse(null);
     }
 
