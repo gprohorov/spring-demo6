@@ -35,7 +35,7 @@ public class ItemService {
     @Autowired
     ItemMongoRepository repository;
 
-  @PostConstruct
+ // @PostConstruct
     void init(){
         repository.saveAll(items);
     }
@@ -71,6 +71,26 @@ public class ItemService {
         return this.getAllItems().stream()
                 .filter(item -> item.getName().equals(name))
                 .collect(Collectors.toList());
+    }
+
+    public List<Item> getAllByString(String str){
+//
+//      return this.getAllItems().stream()
+//                .filter(item -> item.getName().contains(str))
+//                .collect(Collectors.toList());
+//
+
+        return repository.findAllByNameContaining(str);
+    }
+
+    public List<Item> getAllOrderedByName(){
+
+     return this.getAllItems().stream()
+              .sorted(Comparator.comparing(Item::getName))
+               .collect(Collectors.toList());
+
+
+ /*       return repository.findAllOrderByNameAsc();  */
     }
 
 

@@ -73,6 +73,18 @@ public class ItemRestController {
          service.delete(id);
     }
 
+    @GetMapping("/search/name/{str}")
+    public List<Item> getAllByName(@PathVariable String str){
+        return service.getAllByString(str);
+    }
+
+    @GetMapping("/order/name")
+    public List<Item> getAllSortedByName(){
+        return service.getAllOrderedByName();
+    }
+
+
+
 
 
 /*

@@ -17,5 +17,7 @@ import java.util.List;
 @Repository
 public interface ItemMongoRepository extends MongoRepository<Item, String> {
     List<Item> findAllByNameAndCreatedAtBetween(String name, LocalDateTime from, LocalDateTime to);
+    List<Item> findAllByNameContaining(String str);
+    //List<Item> findAllOrderByNameAsc();
 
 }
