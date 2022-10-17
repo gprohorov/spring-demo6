@@ -49,6 +49,9 @@ public class ItemService {
     }
 
     public Item create(Item item){
+        if (item == null) {
+            throw new RuntimeException();
+        }
         item.setCreatedAt(LocalDateTime.now());
        // item.setUpdatedAt(LocalDateTime.now());
         Item itemFromDB = repository.save(item);
